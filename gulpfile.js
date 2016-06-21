@@ -48,5 +48,5 @@ gulp.task('default', ['browser-sync'], function () {
             reload(file.path);
         }
     });
-    gulp.watch("themes/user/wiki_themes/foundation/*.html", ['bs-reload']);
+    gulp.watch("../*.html", ['bs-reload']);
 });

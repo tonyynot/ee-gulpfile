@@ -31,22 +31,8 @@ gulp.task('serve', ['sass'], function () {
 gulp.task('sass', function() {
     return gulp.src("./htdocs/scss/*.scss")
         .pipe(sass())
-        .pipe(gulp.dest("htdocs/css"))
+        .pipe(gulp.dest("./htdocs/css"))
         .pipe(browserSync.stream());
 });
 
-<<<<<<< HEAD
-// Default task to be run with `gulp`
-// This default task will run BrowserSync & then use Gulp to watch files.
-// When a file is changed, an event is emitted to BrowserSync with the filepath.
-gulp.task('default', ['browser-sync'], function () {
-    gulp.watch('css/*.css', function (file) {
-        if (file.type === "changed") {
-            reload(file.path);
-        }
-    });
-    gulp.watch("../*.html", ['bs-reload']);
-});
-=======
 gulp.task('default', ['serve']);
->>>>>>> 70aac188c3c4bac7069b4f0758412d84d21186bf

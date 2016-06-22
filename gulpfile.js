@@ -12,33 +12,30 @@
  * Then run it with:
  * gulp
  */
-var browserSync = require('browser-sync');
-var reload      = browserSync.reload;
 var gulp        = require('gulp');
+var browserSync = require('browser-sync').create();
 var sass        = require('gulp-sass');
 
 // Browser-sync task, only cares about compiled CSS
-gulp.task('browser-sync', function () {
-    browserSync({
-        proxy: "_____"
+gulp.task('serve', ['sass'], function () {
+
+    browserSync.init({
+        proxy: "-----"
     });
+
+    gulp.watch("./htdocs/scss/*.scss", ['sass']);
+    gulp.watch("./htdocs/system/user/templates/daily_bible/**/*.html").on('change', browserSync.reload);
 });
 
-
-// Sass task, will run when any SCSS files change & BrowserSync
-// will auto-update browsers
-gulp.task('sass', function () {
-    return gulp.src('scss/**/*.scss')
+// Compile sass into CSS & auto-inject into browsers
+gulp.task('sass', function() {
+    return gulp.src("./htdocs/scss/*.scss")
         .pipe(sass())
-        .pipe(gulp.dest('css'))
-        .pipe(reload({stream:true}));
+        .pipe(gulp.dest("htdocs/css"))
+        .pipe(browserSync.stream());
 });
 
-// Reload all Browsers
-gulp.task('bs-reload', function () {
-    browserSync.reload();
-});
-
+<<<<<<< HEAD
 // Default task to be run with `gulp`
 // This default task will run BrowserSync & then use Gulp to watch files.
 // When a file is changed, an event is emitted to BrowserSync with the filepath.
@@ -50,3 +47,6 @@ gulp.task('default', ['browser-sync'], function () {
     });
     gulp.watch("../*.html", ['bs-reload']);
 });
+=======
+gulp.task('default', ['serve']);
+>>>>>>> 70aac188c3c4bac7069b4f0758412d84d21186bf

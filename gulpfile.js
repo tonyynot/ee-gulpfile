@@ -34,7 +34,8 @@ gulp.task('sass', function() {
 
 gulp.task('browser-sync', function() {
     browserSync.init({
-        proxy: proxyURL
+        proxy: proxyURL,
+        open: false
     })
 });
 

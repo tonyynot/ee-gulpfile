@@ -1,18 +1,3 @@
-/**
- * This example:
- *  Uses the built-in BrowserSync server for HTML files
- *  Watches & compiles SASS files
- *  Watches & injects CSS files
- *
- * More details: http://www.browsersync.io/docs/gulp/
- *
- * Install:
- * npm install browser-sync gulp gulp-sass --save-dev
- *
- * Then run it with:
- * gulp
- */
-
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
